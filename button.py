@@ -19,8 +19,8 @@ cmd = "sudo supervisorctl restart myo"
 while True:
   ttl = mc.get('ttl2')
   b = grovepi.digitalRead(button)
-  print b
-  print ttl
+  #print b
+  #print ttl
   if (b == 1):
     if (ttl == 'yes'):
       print('button pressed too fast: ' + str(time.time()))

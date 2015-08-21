@@ -13,8 +13,8 @@ mc = memcache.Client(['127.0.0.1:11211'], debug=0)
 button = 3
 grovepi.pinMode(button,"INPUT") 
 
-cmd = ["ls", "-l"]
-#cmd = ["sudo", "supervisorctl", "restart", "myo"]
+#cmd = ["ls", "-l"]
+cmd = "sudo supervisorctl restart myo"
 
 while True:
   ttl = mc.get('ttl2')
@@ -28,6 +28,7 @@ while True:
       mc.set('ttl2', 'yes', 2)
       mc.set('sound', 'reset', 2)
       print('button pressed! ' + str(time.time()))
+      sys.stdout.flush()
       subprocess.call(cmd, shell=True)
   time.sleep(0.1)
   sys.stdout.flush()

@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
-import mraa
 import time
+import grovepi
 
 import memcache
 
@@ -10,19 +10,20 @@ import sys
 
 mc = memcache.Client(['127.0.0.1:11211'], debug=0)
 
-x = mraa.Gpio(8)
-x.dir(mraa.DIR_IN)
-time.sleep(1)
+button = 3
+grovepi.pinMode(button,"INPUT") 
 
-#cmd = ["ls", "-l"]
-cmd = ["sudo", "supervisorctl", "restart", "myo"]
+cmd = ["ls", "-l"]
+#cmd = ["sudo", "supervisorctl", "restart", "myo"]
 
 while True:
   ttl = mc.get('ttl2')
-  b = x.read()
+  b = grovepi.digitalRead(button)
+  print b
+  print ttl
   if (b == 1):
     if (ttl == 'yes'):
-      print('button pressed too fast')
+      print('button pressed too fast: ' + str(time.time()))
     else:
       mc.set('ttl2', 'yes', 2)
       mc.set('sound', 'reset', 2)

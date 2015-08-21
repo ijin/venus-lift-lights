@@ -77,7 +77,7 @@ while True:
         mc.set('ttl', 'yes', 2.9)
         mc.set('sound', 'power', 2.9)
         #urlopen('http://localhost:8080/led/power').read()
-        playIR('/home/pi/led-power.json')
+        playIR('led/led-power.json')
         print('POWER '+ str(time.time()))
         flash(0.1)
         sys.stdout.flush()

@@ -45,3 +45,4 @@ while True:
     print('playing init!')
     mc.set('sound_ttl', 'yes', 2.9)
     short()
+  time.sleep(0.1)

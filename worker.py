@@ -70,7 +70,7 @@ while True:
     #m_time = mc.get('m_time') or time.time()
     #print(pose)
     #print edge
-    if (pose == 'fist') and (edge == 'on') and (ttl != 'yes'): #and (m_time + 3 > time.time()):
+    if (pose == 'fist') and (edge == 'on') and (ttl != 'yes'):
       #if (ttl == 'yes'):
         #print('not too fast!!')
       #else:
@@ -79,6 +79,20 @@ while True:
         #urlopen('http://localhost:8080/led/power').read()
         playIR('led/led-power.json')
         print('POWER '+ str(time.time()))
+        flash(0.1)
+        sys.stdout.flush()
+    elif (pose == 'waveOut') and (edge == 'on') and (ttl != 'yes'):
+        mc.set('ttl', 'yes', 2.9)
+        mc.set('sound', 'wo', 2.9)
+        playIR('led/led-quick.json')
+        print('QUICK '+ str(time.time()))
+        flash(0.1)
+        sys.stdout.flush()
+    elif (pose == 'waveIn') and (edge == 'on') and (ttl != 'yes'):
+        mc.set('ttl', 'yes', 2.9)
+        mc.set('sound', 'wi', 2.9)
+        playIR('led/led-slow.json')
+        print('SLOW '+ str(time.time()))
         flash(0.1)
         sys.stdout.flush()
     time.sleep(0.05)

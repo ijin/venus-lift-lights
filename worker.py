@@ -64,34 +64,31 @@ time.sleep(1)
 
 while True:
     pose = mc.get('pose')
-    edge = mc.get('edge')
+    fist_edge = mc.get('fist_edge')
+    finger_edge = mc.get('finger_edge')
+    wave_edge = mc.get('wave_edge')
     recent = mc.get('recent')
     ttl = mc.get('ttl')
-    #m_time = mc.get('m_time') or time.time()
     #print(pose)
     #print edge
-    if (pose == 'fist') and (edge == 'on') and (ttl != 'yes'):
-      #if (ttl == 'yes'):
-        #print('not too fast!!')
-      #else:
+    if (pose == 'fist') and (fist_edge == 'on') and (ttl != 'yes'):
         mc.set('ttl', 'yes', 2.9)
         mc.set('sound', 'power', 2.9)
-        #urlopen('http://localhost:8080/led/power').read()
         playIR('led/led-power.json')
         print('POWER '+ str(time.time()))
         flash(0.1)
         sys.stdout.flush()
-    elif (pose == 'waveOut') and (edge == 'on') and (ttl != 'yes'):
+    elif (pose == 'waveOut') and (wave_edge == 'on') and (ttl != 'yes'):
         mc.set('ttl', 'yes', 2.9)
         mc.set('sound', 'wo', 2.9)
-        playIR('led/led-quick.json')
+        playIR('led/led-jump7.json')
         print('QUICK '+ str(time.time()))
         flash(0.1)
         sys.stdout.flush()
-    elif (pose == 'waveIn') and (edge == 'on') and (ttl != 'yes'):
+    elif (pose == 'waveIn') and (wave_edge == 'on') and (ttl != 'yes'):
         mc.set('ttl', 'yes', 2.9)
         mc.set('sound', 'wi', 2.9)
-        playIR('led/led-slow.json')
+        playIR('led/led-fade7.json')
         print('SLOW '+ str(time.time()))
         flash(0.1)
         sys.stdout.flush()

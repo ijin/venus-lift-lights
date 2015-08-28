@@ -15,19 +15,19 @@ def onPoseEdge(pose, edge):
     mc = memcache.Client(['127.0.0.1:11211'], debug=0)
     if (pose == 'fist'):
         mc.set('pose', 'fist', 3)
-        mc.set('edge', edge, 3)
+        mc.set('fist_edge', edge, 3)
         print("FIST: "+pose+", "+edge)
     elif (pose == 'fingersSpread'):
         mc.set('pose', 'fingersSpread', 3)
-        mc.set('edge', edge, 3)
+        mc.set('finger_edge', edge, 3)
         print("FINGERS: "+pose+", "+edge)
     elif (pose == 'waveIn'):
         mc.set('pose', 'waveIn', 3)
-        mc.set('edge', edge, 3)
+        mc.set('wave_edge', edge, 3)
         print("WAVE_IN: "+pose+", "+edge)
     elif (pose == 'waveOut'):
         mc.set('pose', 'waveOut', 3)
-        mc.set('edge', edge, 3)
+        mc.set('wave_edge', edge, 3)
         print("WAVE_OUT: "+pose+", "+edge)
     else:
         mc.set('pose', pose)

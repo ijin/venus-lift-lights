@@ -30,6 +30,7 @@ while True:
       print('button pressed! ' + str(time.time()))
       sys.stdout.flush()
       subprocess.call(cmd, shell=True)
+      mc.set('sound', 'init', 2)
   time.sleep(0.1)
   sys.stdout.flush()
 
